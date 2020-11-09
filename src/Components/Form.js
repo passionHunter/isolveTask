@@ -10,6 +10,7 @@ import {
 import { Actions } from 'react-native-router-flux';
 import Colors from '../Shared/Colors';
 import firebase from 'react-native-firebase';
+import Icon from '../Components/IconSet'
 
 export default class Form extends Component {
     constructor(props) {
@@ -59,9 +60,6 @@ export default class Form extends Component {
                     res.user.updateProfile({
                         displayName: this.state.displayName,
                     })
-                    res.user.updatePhoneNumber({
-                        phoneNumber: this.state.phoneNumber
-                    })
                     console.log("Response", res)
                     Alert.alert("Successfully Registered")
                     Actions.profile()
@@ -76,26 +74,32 @@ export default class Form extends Component {
         if (this.props.type == 'Login') {
             return (
                 <View style={styles.container}>
-                    <TextInput
-                        style={styles.inputBox}
-                        underlineColorAndroid="rgba(0,0,0,0)"
-                        onChangeText={text => this.setState({ email: text })}
-                        value={this.state.email}
-                        keyboardType={'email-address'}
-                        placeholder="Email ID"
-                        placeholderTextColor={Colors.blackColor}
-                        onSubmitEditing={() => this.password.focus()}
-                    />
-                    <TextInput
-                        style={styles.inputBox}
-                        underlineColorAndroid="rgba(0,0,0,0)"
-                        onChangeText={text => this.setState({ password: text })}
-                        value={this.state.password}
-                        placeholder="Password"
-                        secureTextEntry={true}
-                        placeholderTextColor={Colors.blackColor}
-                        ref={input => (this.password = input)}
-                    />
+                    <View style={styles.inputView}>
+                        <Icon.MaterialCommunityIcons name="email" size={25} style={styles.iconStyle} />
+                        <TextInput
+                            style={styles.inputBox}
+                            underlineColorAndroid="rgba(0,0,0,0)"
+                            onChangeText={text => this.setState({ email: text })}
+                            value={this.state.email}
+                            keyboardType={'email-address'}
+                            placeholder="Email ID"
+                            placeholderTextColor={Colors.blackColor}
+                            onSubmitEditing={() => this.password.focus()}
+                        />
+                    </View>
+                    <View style={styles.inputView}>
+                        <Icon.FontAwesome name="lock" size={25} style={styles.iconStyle} />
+                        <TextInput
+                            style={styles.inputBox}
+                            underlineColorAndroid="rgba(0,0,0,0)"
+                            onChangeText={text => this.setState({ password: text })}
+                            value={this.state.password}
+                            placeholder="Password"
+                            secureTextEntry={true}
+                            placeholderTextColor={Colors.blackColor}
+                            ref={input => (this.password = input)}
+                        />
+                    </View>
                     <TouchableOpacity style={{ paddingVertical: 8 }} onPress={() => Actions.signup()}>
                         <Text style={styles.account}>Don't Have Account ? SIGN UP here</Text>
                     </TouchableOpacity>
@@ -108,61 +112,75 @@ export default class Form extends Component {
         } else if (this.props.type == 'Register') {
             return (
                 <View style={styles.container}>
-                    <TextInput
-                        style={styles.inputBox}
-                        underlineColorAndroid="rgba(0,0,0,0)"
-                        onChangeText={text => this.setState({ displayName: text })}
-                        value={this.state.displayName}
-                        placeholder="Username"
-                        placeholderTextColor={Colors.blackColor}
-                        selectionColor="#fff"
-                        onSubmitEditing={() => this.email.focus()}
-                    />
-                    <TextInput
-                        style={styles.inputBox}
-                        underlineColorAndroid="rgba(0,0,0,0)"
-                        onChangeText={text => this.setState({ email: text })}
-                        value={this.state.email}
-                        keyboardType={'email-address'}
-                        placeholder="Email ID"
-                        placeholderTextColor={Colors.blackColor}
-                        ref={input => (this.email = input)}
-                        onSubmitEditing={() => this.phoneNumber.focus()}
-                    />
-                    <TextInput
-                        style={styles.inputBox}
-                        underlineColorAndroid="rgba(0,0,0,0)"
-                        onChangeText={text => this.setState({ phoneNumber: text })}
-                        value={this.state.phoneNumber}
-                        keyboardType={'number-pad'}
-                        maxLength={10}
-                        placeholder="Phone Number"
-                        placeholderTextColor={Colors.blackColor}
-                        ref={input => (this.phoneNumber = input)}
-                        onSubmitEditing={() => this.password.focus()}
-                    />
-
-                    <TextInput
-                        style={styles.inputBox}
-                        underlineColorAndroid="rgba(0,0,0,0)"
-                        onChangeText={text => this.setState({ password: text })}
-                        value={this.state.password}
-                        placeholder="Password"
-                        secureTextEntry={true}
-                        placeholderTextColor={Colors.blackColor}
-                        ref={input => (this.password = input)}
-                        onSubmitEditing={() => this.confirm.focus()}
-                    />
-                    <TextInput
-                        style={styles.inputBox}
-                        underlineColorAndroid="rgba(0,0,0,0)"
-                        onChangeText={text => this.setState({ confirm: text })}
-                        value={this.state.confirm}
-                        placeholder="Confirm Password"
-                        secureTextEntry={true}
-                        placeholderTextColor={Colors.blackColor}
-                        ref={input => (this.confirm = input)}
-                    />
+                    <View style={styles.inputView}>
+                        <Icon.FontAwesome name="user-circle-o" size={25} style={styles.iconStyle} />
+                        <TextInput
+                            style={styles.inputBox}
+                            underlineColorAndroid="rgba(0,0,0,0)"
+                            onChangeText={text => this.setState({ displayName: text })}
+                            value={this.state.displayName}
+                            placeholder="Username"
+                            placeholderTextColor={Colors.blackColor}
+                            selectionColor="#fff"
+                            onSubmitEditing={() => this.email.focus()}
+                        />
+                    </View>
+                    <View style={styles.inputView}>
+                        <Icon.MaterialCommunityIcons name="email" size={25} style={styles.iconStyle} />
+                        <TextInput
+                            style={styles.inputBox}
+                            underlineColorAndroid="rgba(0,0,0,0)"
+                            onChangeText={text => this.setState({ email: text })}
+                            value={this.state.email}
+                            keyboardType={'email-address'}
+                            placeholder="Email ID"
+                            placeholderTextColor={Colors.blackColor}
+                            ref={input => (this.email = input)}
+                            onSubmitEditing={() => this.phoneNumber.focus()}
+                        />
+                    </View>
+                    <View style={styles.inputView}>
+                        <Icon.FontAwesome name="phone" size={25} style={styles.iconStyle} />
+                        <TextInput
+                            style={styles.inputBox}
+                            underlineColorAndroid="rgba(0,0,0,0)"
+                            onChangeText={text => this.setState({ phoneNumber: text })}
+                            value={this.state.phoneNumber}
+                            keyboardType={'number-pad'}
+                            maxLength={10}
+                            placeholder="Phone Number"
+                            placeholderTextColor={Colors.blackColor}
+                            ref={input => (this.phoneNumber = input)}
+                            onSubmitEditing={() => this.password.focus()}
+                        />
+                    </View>
+                    <View style={styles.inputView}>
+                        <Icon.FontAwesome name="lock" size={25} style={styles.iconStyle} />
+                        <TextInput
+                            style={styles.inputBox}
+                            underlineColorAndroid="rgba(0,0,0,0)"
+                            onChangeText={text => this.setState({ password: text })}
+                            value={this.state.password}
+                            placeholder="Password"
+                            secureTextEntry={true}
+                            placeholderTextColor={Colors.blackColor}
+                            ref={input => (this.password = input)}
+                            onSubmitEditing={() => this.confirm.focus()}
+                        />
+                    </View>
+                    <View style={styles.inputView}>
+                        <Icon.MaterialCommunityIcons name="lock-check" size={25} style={styles.iconStyle} />
+                        <TextInput
+                            style={styles.inputBox}
+                            underlineColorAndroid="rgba(0,0,0,0)"
+                            onChangeText={text => this.setState({ confirm: text })}
+                            value={this.state.confirm}
+                            placeholder="Confirm Password"
+                            secureTextEntry={true}
+                            placeholderTextColor={Colors.blackColor}
+                            ref={input => (this.confirm = input)}
+                        />
+                    </View>
                     <TouchableOpacity
                         style={styles.button} onPress={this.signUpAuth}>
                         <Text style={styles.buttonText}>Register</Text>
@@ -183,15 +201,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         // backgroundColor: 'red',
     },
+    inputView: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderRadius: 6,
+        elevation: 3,
+        marginVertical: 10,
+    },
+    iconStyle: {
+        color: Colors.primaryColor,
+        paddingLeft: 16,
+        paddingRight: 5,
+    },
     inputBox: {
         width: 300,
         backgroundColor: Colors.whiteColor,
-        borderRadius: 6,
-        paddingHorizontal: 16,
         fontSize: 16,
         color: Colors.blackColor,
-        marginVertical: 10,
-        elevation: 3,
     },
     account: {
         top: 5,

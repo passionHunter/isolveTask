@@ -17,7 +17,6 @@ export default class SignUp extends Component {
                         style={{
                             width: 70,
                             height: 70,
-                            alignSelf: 'center',
                         }}
                         resizeMode="contain"
                     />

@@ -37,10 +37,12 @@ export default class Profile extends Component {
     updateProfile() {
         firebase.auth().currentUser.updateProfile({
             displayName: this.state.displayName,
+        }).catch(function (error) {
+            console.error({ error })
         })
-        firebase.auth().currentUser.updatePhoneNumber({
-            phoneNumber: this.state.phoneNumber
-        })
+        // firebase.auth().currentUser.updatePhoneNumber({
+        //     phoneNumber: this.state.phoneNumber
+        // })
         Alert.alert("Successfully Profile updated")
     }
 
