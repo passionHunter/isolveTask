@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "879711307399",
+    "firebase_url": "https://isolvetask.firebaseio.com",
+    "project_id": "isolvetask",
+    "storage_bucket": "isolvetask.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879711307399:android:225ca137c1f699166bda22",
+        "android_client_info": {
+          "package_name": "com.isolvetask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "879711307399-8tooloa1l28htosa5tfdrnq9h2546ckl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHXKtVCSyDui9Vqxb-TYmJ-yHHNi-fAyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "879711307399-8tooloa1l28htosa5tfdrnq9h2546ckl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
